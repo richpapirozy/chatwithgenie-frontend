@@ -3,7 +3,7 @@ from sidebar import display_sidebar
 from chat_interface import display_chat_interface
 import os
 # Default to port 8000 if PORT is not specified
-port = int(os.environ.get('PORT', 8000))
+# port = int(os.environ.get('PORT', 8000))
 
 
 
