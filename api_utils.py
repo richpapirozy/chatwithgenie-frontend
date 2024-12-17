@@ -1,6 +1,7 @@
 import requests
 import streamlit as st
 
+
 def get_api_response(question, session_id, model):
     headers = {
         "accept": "application/json",
@@ -14,7 +15,7 @@ def get_api_response(question, session_id, model):
         data["session_id"] = session_id
 
     try:
-        response = requests.post("https://dcb-moses.onrender.com/chat", headers=headers, json=data)
+        response = requests.post("https://chatwithgenie-backend.onrender.com/chat", headers=headers, json=data)
         if response.status_code == 200:
             return response.json()
         else:
@@ -30,7 +31,7 @@ def upload_document(file):
     print("Uploading file...")
     try:
         files = {"file": (file.name, file, file.type)}
-        response = requests.post("https://dcb-moses.onrender.com/upload-doc", files=files)
+        response = requests.post("https://chatwithgenie-backend.onrender.com/upload-doc", files=files)
         if response.status_code == 200:
             return response.json()
         else:
@@ -43,7 +44,7 @@ def upload_document(file):
 
 def list_documents():
     try:
-        response = requests.get("https://dcb-moses.onrender.com/list-docs")
+        response = requests.get("https://chatwithgenie-backend.onrender.com/list-docs")
         if response.status_code == 200:
             return response.json()
         else:
@@ -61,7 +62,7 @@ def delete_document(file_id):
     data = {"file_id": file_id}
 
     try:
-        response = requests.post("https://dcb-moses.onrender.com/delete-doc", headers=headers, json=data)
+        response = requests.post("https://chatwithgenie-backend.onrender.com/delete-doc", headers=headers, json=data)
         if response.status_code == 200:
             return response.json()
         else:
